@@ -36,9 +36,14 @@
   width: 100%;
 }
 
-section h1 {
+section  h1 {
   color: #fff;
-  font-size: 4.8rem;
+  font-size: 3.8rem;
+  text-align: center;
+}
+section  h2 {
+  color: #fff;
+  font-size: 1.8rem;
   text-align: center;
 }
 

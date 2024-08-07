@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { MdCheck, MdDeleteForever } from "react-icons/md";
 
@@ -6,6 +7,7 @@ export const TodoList = ( ) => {
 
     const [inputValue, setInputValue] = useState("");
     const [task, setTask] = useState([])
+    const [dateTime, setDateTime] = useState("");
 
 
     // in this handleInputChange the value is passed in it and got the value by setInputValue 
@@ -31,12 +33,30 @@ export const TodoList = ( ) => {
         
     
         setInputValue("");
-    }
+    };
 
+
+    //  todo Data and Time
+   
+    useEffect(() => {
+        const interval =  setInterval(() => {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString();
+            const formattedTime = now.toLocaleTimeString();
+
+            setDateTime(`${formattedDate} - ${formattedTime}`)
+        }, 1000);
+
+        return () => clearInterval(interval)
+    }, [])
+   
 
     return(
         <section className="todo-container">
-            <header>ToDo List</header>
+            <header>
+                <h1>ToDo List</h1>
+                <h2 className="data-time">{dateTime}</h2>
+            </header>
             <section className="form">
                 <form onSubmit={handleFormSubmit}>
                     <div>
