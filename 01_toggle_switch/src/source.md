@@ -24,3 +24,6 @@
 - Inside the outer div, there’s another div with a dynamic class name based on buttonIsOnOff. This 
     inner div represents the switch itself.
 - The span inside this inner div displays the current state of the switch (either "on" or "off").
+
+- to use icons from React Icons by github
+    *install npm i styled-components (from npmjs.com)
