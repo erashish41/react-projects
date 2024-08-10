@@ -1,8 +1,7 @@
-import { useEffect } from "react";
 import { useState } from "react";
-import { MdCheck, MdDeleteForever } from "react-icons/md";
 import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
+import { TodoDateTime } from "./TodoDateTime";
 
 
 export const TodoApp = ( ) => {
@@ -25,9 +24,6 @@ export const TodoApp = ( ) => {
     };
 
 
-    //  todo Data and Time
-   
-    
 
     // handle handleDeleteToDo funtion
     const handleDeleteToDo =(value) => {
@@ -49,6 +45,7 @@ export const TodoApp = ( ) => {
         <section className="todo-container">
             <header>
                 <h1>ToDo List</h1>
+                <TodoDateTime />
             </header>
             <TodoForm  onAddTodo={handleFormSubmit} />
             <section className="myUnOrderList">
