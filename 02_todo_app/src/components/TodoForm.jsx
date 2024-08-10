@@ -2,13 +2,13 @@ import { useState } from "react";
 
 export const TodoForm = ({onAddTodo}) => {
 
-    const [inputValue, setInputValue] = useState("");
+    const [inputValue, setInputValue] = useState({ });
 
      // in this handleInputChange the value is passed in it and got the value by setInputValue 
     //  in inputValue (current data)
     // we will get the value from user and will update it on setInputValue
     const handleInputChange =(value) => {
-        setInputValue(value)
+        setInputValue({id: value, content: value, checked: false });
     };
 
 // Child to Parent call 
@@ -23,7 +23,7 @@ export const TodoForm = ({onAddTodo}) => {
             <form onSubmit={handleFormSubmit}>
                 <div>
                     <input type="text" className="todo-input" autoComplete="off" 
-                        value={inputValue} onChange={(event) => handleInputChange(event.target.value)}>
+                        value={inputValue.content} onChange={(event) => handleInputChange(event.target.value)}>
                     </input>
                 </div>
                 <div>

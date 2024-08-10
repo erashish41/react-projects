@@ -156,6 +156,8 @@ Consider security and performance aspects, such as HTTPS and caching, when deplo
 
 1. Simple Todo List in React
 - const [inputValue, setInputValue] = useState("");
+- useState is a React hook that allows you to add state to your functional components.
+
 a. This is array destructuring. useState returns an array with two elements: the current state value 
     and a function that lets you update it. We use array destructuring to name these elements inputValue
      and setInputValue, respectively.
