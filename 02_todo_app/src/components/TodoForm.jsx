@@ -18,7 +18,6 @@ export const TodoForm = ({onAddTodo}) => {
         setInputValue("");
     }
 
-
     return (
         <section className="form">
             <form onSubmit={handleFormSubmit}>
