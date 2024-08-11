@@ -2,13 +2,16 @@ import { useState } from "react";
 import { TodoForm } from "./TodoForm";
 import { TodoList } from "./TodoList";
 import { TodoDateTime } from "./TodoDateTime";
+import { getLocalStorageTodoData, setLocalStorageTodoData } from "./TodoLocalStorage";
+
 
 
 export const TodoApp = ( ) => {
 
-    const [task, setTask] = useState([]);
     // this task state will get the data from inputValue and display the data
     // task is array of an object
+    const [task, setTask] = useState(() =>  getLocalStorageTodoData());
+    
 
 
     const handleFormSubmit = (inputValue) => {    
@@ -30,7 +33,9 @@ export const TodoApp = ( ) => {
         setTask((prevTask) => [...prevTask, {id:id, content:content, checked:checked}])
     };
 
-
+    // todo add data to Local Storage 
+    // (this will add data to local storage in inspect > application > local storage)
+        setLocalStorageTodoData(task);
 
     // handle handleDeleteToDo funtion
     const handleDeleteToDo =(value) => {
