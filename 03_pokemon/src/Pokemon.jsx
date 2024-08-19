@@ -1,36 +1,78 @@
-import { useEffect, useState } from 'react';
-import './index.css';
+import { useEffect, useState } from "react"
+import { PokemonCard } from "./PokemonCard";
 
 export const Pokemon = () => {
 
-    const API = "https://pokeapi.co/api/v2/pokemon?limit=24";
+    const [pokemon, setPokemon] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const fetchPokemon =  async () => {
-        try {
-            const res = await fetch(API)
-            const data = await res.json()
-            console.log(data);
+    const API = "https://pokeapi.co/api/v2/pokemon?limit=100";
+
+    const fetchPokemon = async () => {
+        try{
+            const res = await fetch(API);
+            const data = await res.json();
+            // console.log(data);
             
-        } catch (error) {
+            const detailedPokemonData = data.results.map( async (currElm) => {
+                const res = await fetch(currElm.url);
+                const data = await res.json();
+                // console.log(data);
+
+                return data;
+                                
+            })
+            // console.log(detailedPokemonData);
+
+            const detailedResearched = await Promise.all(detailedPokemonData);
+            console.log(detailedResearched);
+            setPokemon(detailedResearched);
+            setLoading(false);
+        }catch(error){
             console.log(error);
-               
+            setError(error);
+            setLoading(false);
+
         }
     }
 
-    useEffect(()=> {
+    useEffect(() => {
         fetchPokemon();
     }, [])
 
-    
-    return(
-        <>
-            <section>
-                <header>Lets Catch Pokemon</header>
-                <input type='text' autoComplete='off' ></input>
-            </section>
-            <section>
+    if(loading){
+        return(
+            <div>
+                <h1>Loading...</h1>
+            </div>
+        )
+    }
 
-            </section>
-        </>
+    if(error){
+        return(
+            <div>
+                <h1>{error.message}</h1>
+            </div>
+        )
+    }
+
+    return (
+        <section className="container">
+            <header>
+                <h1>Lets Catch Pokemon</h1>
+            </header>
+            <div>
+                <ul className="cards">
+                    {pokemon.map((currPokemon) => {
+                        return (
+                            <PokemonCard key={currPokemon.id} pokemonData = {currPokemon} />
+                        )
+                    })}
+                </ul>
+            </div>
+            {/* <input type=" text" className="inputPokemon" autoComplete="off"></input> */}
+
+        </section>
     )
 }
