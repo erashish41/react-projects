@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import data from "./data.json";
 import { FAQTwo } from "./FAQTwo";
+import "../App.css"
 
 export const AccordionTwo = () => {
 
