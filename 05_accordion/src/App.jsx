@@ -1,10 +1,12 @@
 import Accordion from "./components/Accordion"
+import { AccordionTwo } from "./components/AccordionTwo";
 
 const App = () => {
   return(
     <>
       <div>
-        <Accordion />
+        {/* <Accordion /> */}
+        <AccordionTwo />
       </div>
     </>
   )
