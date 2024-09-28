@@ -4,8 +4,9 @@
     z-index: 1;
     width: 100%;
     text-align: center;
-    background-color: #000000;
+    background-color: #0d0e0c;
     color: #fff;
+    
 }
 
 .scroll-progress-tracking-container{
@@ -18,4 +19,10 @@
     height: 10px;
     background-color: #e71dd9;
     width: 0%;
+}
+
+.contianer{
+    align-items: center;
+    text-align: center;
+    background-color: #8b8d80;
 }
