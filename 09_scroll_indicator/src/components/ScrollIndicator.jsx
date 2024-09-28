@@ -15,6 +15,7 @@ export const ScrollIndicator = ({url}) => {
 
             if(data && data.products && data.products.length > 0){
                 setItems(data.products)
+                setLoading(false)
             }
             // console.log(data);
         } catch (error){
@@ -37,6 +38,9 @@ export const ScrollIndicator = ({url}) => {
 
         const howMuchScrolled = 
         document.body.scrollTop || document.documentElement.scrollTop;
+        // The || (logical OR) operator checks if document.body.scrollTop has a truthy value. 
+        // If it does (i.e., it's not 0), howMuchScrolled will be set to that value. If not, it
+        //  will fall back to document.documentElement.scrollTop.
         
         const height = 
         document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -47,8 +51,8 @@ export const ScrollIndicator = ({url}) => {
     useEffect(() => {
         window.document.addEventListener("scroll", handleScrollPercentage);
 
-        return(
-            window.document.removeEventListener("scroll", ()=> {})
+        return () => (
+            window.document.removeEventListener("scroll", handleScrollPercentage)
         )
     }, [])
 
