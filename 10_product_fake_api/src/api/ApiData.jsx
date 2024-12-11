@@ -1,6 +1,6 @@
 export const ApiData = async () =>{
 
-    const apiUrl = "https://api.escuelajs.co/api/v1/products";
+    const apiUrl = "https://fakestoreapi.com/products";
     try{
         const response = await fetch(apiUrl);
         // console.log(response);
